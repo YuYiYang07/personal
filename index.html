@@ -46,9 +46,24 @@
             <p class="text-sm font-semibold text-blue-600 tracking-widest uppercase mb-4">Portfolio 2025</p>
             
             <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 leading-tight">
-                Engineering <br>
-                <span class="outline-text cursor-default">Intelligence.</span>
-            </h1>
+    Engineering <br>
+    <span id="typewriter" class="text-blue-600"></span><span class="animate-pulse">|</span>
+</h1>
+<script>
+    const text = "Intelligence.";
+    const el = document.getElementById('typewriter');
+    let i = 0;
+    
+    function type() {
+        if (i < text.length) {
+            el.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, 150); // Typing speed
+        }
+    }
+    // Start typing after 0.5s
+    setTimeout(type, 500);
+</script>
             
             <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-10 font-light">
                 Student at Singapore Polytechnic. Transforming from zero to full-stack AI developer in one year.
@@ -66,4 +81,5 @@
     </footer>
 </body>
 </html>
+
 
