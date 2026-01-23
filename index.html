@@ -3,48 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yu Yiyang | AI Engineer & Developer</title>
+    <title>Yuh Yee Young | AI & Analytics</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #F5F5F7; color: #1D1D1F; }
-        .fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
-        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+        /* Custom "Apple-like" Animations and Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; color: #111; }
+        
+        /* The "Empty Inside" Dynamic Scroll Font Effect */
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(0,0,0,0.2);
+            color: transparent;
+            transition: all 0.5s ease;
+        }
+        .outline-text:hover {
+            color: #000;
+            -webkit-text-stroke: 0px;
+        }
+
+        /* Smooth Fade In */
+        .fade-in { animation: fadeIn 1.2s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-semibold text-lg tracking-tight hover:text-blue-600 transition">YUYIYANG®</a>
-            <div class="space-x-8 text-sm font-medium text-gray-500">
-                <a href="about.html" class="hover:text-black transition">About</a>
-                <a href="projects.html" class="hover:text-black transition">Portfolio</a>
-                <a href="contact.html" class="hover:text-black transition">Contact</a>
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tighter">YYY®</a>
+            <div class="space-x-8 hidden md:flex text-sm font-medium text-gray-500">
+                <a href="index.html" class="text-black hover:text-blue-600 transition">Overview</a>
+                <a href="projects.html" class="hover:text-blue-600 transition">Work</a>
+                <a href="skills.html" class="hover:text-blue-600 transition">Skills</a>
+                <a href="about.html" class="hover:text-blue-600 transition">About</a>
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow flex items-center justify-center px-6">
-        <div class="text-center max-w-3xl fade-in" style="animation-delay: 0.1s;">
-            <p class="text-blue-600 font-medium mb-4 tracking-wide uppercase text-xs">Portfolio 2025</p>
-            <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-6 leading-tight">
-                Bring You <br> Wisdom™
+    <main class="flex-grow flex items-center justify-center pt-20">
+        <div class="max-w-5xl px-6 text-center fade-in">
+            <p class="text-sm font-semibold text-blue-600 tracking-widest uppercase mb-4">Portfolio 2025</p>
+            
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 leading-tight">
+                Engineering <br>
+                <span class="outline-text cursor-default">Intelligence.</span>
             </h1>
-            <p class="text-xl text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
-                Full-Stack AI Developer & Student at Singapore Polytechnic.<br>
-                Specializing in Edge AI, Web Infrastructure, and Cognition.
+            
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-10 font-light">
+                Student at Singapore Polytechnic. Transforming from zero to full-stack AI developer in one year.
+                <br><span class="text-black font-medium">Current GPA: 3.94 / 4.00</span>
             </p>
+
             <div class="flex justify-center gap-4">
-                <a href="projects.html" class="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">View My Work</a>
-                <a href="about.html" class="bg-white text-black border border-gray-300 px-8 py-3 rounded-full font-medium hover:bg-gray-50 transition">More About Me</a>
+                <a href="projects.html" class="px-8 py-3 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition">View My Work</a>
+                <a href="mailto:YIYANG.25@ichat.sp.edu.sg" class="px-8 py-3 bg-gray-100 text-black rounded-full font-medium hover:bg-gray-200 transition">Contact Me</a>
             </div>
         </div>
     </main>
 
     <footer class="py-8 text-center text-gray-400 text-xs">
-        &copy; 2026 Yu Yiyang. Designed with Minimalism.
+        <p>&copy; 2026 Yuh Yee Young. Designed in Singapore.</p>
     </footer>
-
 </body>
 </html>
