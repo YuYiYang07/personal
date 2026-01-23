@@ -5,9 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Yuh Yee Young</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap'); body{font-family:'Inter',sans-serif;}</style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; color: #111; overflow-x: hidden; }
+        
+        /* The "Empty Inside" Font */
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(0,0,0,0.3);
+            color: transparent;
+        }
+
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+        
+        /* Card Stack Styles */
+        .card-stack-section {
+            position: relative;
+            height: 300vh; /* Determines length of scroll */
+        }
+        .sticky-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .card {
+            position: absolute;
+            width: 350px;
+            height: 450px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform-origin: center bottom;
+            border: 1px solid #f3f4f6;
+        }
+        .card img {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 24px;
+        }
+        
+        /* Text Content that changes */
+        .dynamic-text-area {
+            position: absolute;
+            right: 10%;
+            width: 300px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        .active-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-900 pt-24">
+<body class="bg-[#FAFAFA]">
 
     <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
@@ -21,50 +87,120 @@
         </div>
     </nav>
 
-    <div class="max-w-3xl mx-auto px-6">
-        <h1 class="text-4xl font-bold mb-8">About Me</h1>
-        
-        <p class="text-xl text-gray-600 mb-12 leading-relaxed">
-            Born in Zhejiang (2007) and currently based in Singapore. I am an explorative thinker standing at the intersection of Art, Logic, and Artificial Intelligence.
+    <section class="h-[60vh] flex flex-col justify-center items-center text-center px-6 pt-20">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+            The <span class="outline-text text-black">Timeline.</span>
+        </h1>
+        <p class="text-gray-500 max-w-xl text-lg">
+            From the scenic hills of Zhejiang to the digital frontier of Singapore. 
+            <br>A story of transformation.
         </p>
+        <div class="mt-10 animate-bounce text-gray-400">↓ Scroll to Explore</div>
+    </section>
 
-        <section class="mb-16">
-            <h2 class="text-lg font-bold uppercase tracking-widest mb-4">My Journey</h2>
-            <div class="pl-4 border-l-2 border-gray-200 space-y-8">
-                <div>
-                    <span class="text-sm text-gray-400">2025 - Present</span>
-                    <h3 class="text-lg font-semibold">Singapore Polytechnic</h3>
-                    <p class="text-gray-600">Diploma in Applied AI and Analytics. Achieved GPA 3.94/4.00. Speaker for School of Computing Open House.</p>
+    <section class="card-stack-section" id="stackSection">
+        <div class="sticky-container">
+            
+            <div class="relative w-full md:w-1/2 h-full flex items-center justify-center">
+                <div class="card card-1 z-30">
+                    <div class="h-[60%] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center text-gray-400">
+                        [Photo: Zhejiang / Childhood]
+                    </div>
+                    <div class="card-content">
+                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">2007 - 2023</div>
+                        <h3 class="text-2xl font-bold mb-2">The Origin</h3>
+                        <p class="text-sm text-gray-500">Born in Zhejiang. A life of calligraphy, ink, and paper. No code, just art.</p>
+                    </div>
                 </div>
-                <div>
-                    <span class="text-sm text-gray-400">2024</span>
-                    <h3 class="text-lg font-semibold">The Beginning</h3>
-                    <p class="text-gray-600">Completed O-Levels. Transitioned from zero programming knowledge to full-stack capability within one year.</p>
+
+                <div class="card card-2 z-20 scale-90 translate-y-4 opacity-0">
+                    <div class="h-[60%] bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-blue-400">
+                        [Photo: Singapore / O-Levels]
+                    </div>
+                    <div class="card-content">
+                        <div class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-1">2024</div>
+                        <h3 class="text-2xl font-bold mb-2">The Transition</h3>
+                        <p class="text-sm text-gray-500">Moved to Singapore. Completed O-Levels. A blank slate technically—knew only Excel & Word.</p>
+                    </div>
+                </div>
+
+                <div class="card card-3 z-10 scale-90 translate-y-8 opacity-0">
+                    <div class="h-[60%] bg-gradient-to-br from-black to-gray-800 flex items-center justify-center text-white">
+                        [Photo: Coding / Robot]
+                    </div>
+                    <div class="card-content">
+                        <div class="text-xs font-bold text-black uppercase tracking-widest mb-1">2025 - Present</div>
+                        <h3 class="text-2xl font-bold mb-2">The Awakening</h3>
+                        <p class="text-sm text-gray-500">Entered SP DAAA. From zero to Full-Stack AI in 12 months. GPA 3.94.</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <section class="mb-16">
-            <h2 class="text-lg font-bold uppercase tracking-widest mb-4">Values & Aspirations</h2>
-            <ul class="space-y-4 text-gray-700">
-                <li class="flex items-start">
-                    <span class="mr-2 text-blue-500">▪</span> 
-                    I strive to balance technical learning with moral clarity, exploring how AI reflects or diverges from human cognition.
-                </li>
-                <li class="flex items-start">
-                    <span class="mr-2 text-blue-500">▪</span> 
-                    <b>2026 Goals:</b> Deepening knowledge in Algorithms (DP, Graphs), Multimodal AI, and expanding into philosophy and high-quality technological journalism.
-                </li>
-            </ul>
-        </section>
+            <div class="hidden md:block w-1/2 h-full relative">
+                <div class="absolute top-1/2 -translate-y-1/2 left-10">
+                    
+                    <div class="dynamic-text-area text-1">
+                        <h2 class="text-4xl font-bold mb-4">Roots in Tradition</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Before lines of code, I studied lines of ink. My background in Calligraphy and the Erhu taught me discipline and the beauty of structure—principles I now apply to software architecture.
+                        </p>
+                    </div>
+
+                    <div class="dynamic-text-area text-2">
+                        <h2 class="text-4xl font-bold mb-4">A New Challenge</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            Arriving in Singapore was a reset. I faced the O-Levels with determination. At this stage, "Python" was just a snake to me. I had zero programming knowledge.
+                        </p>
+                    </div>
+
+                    <div class="dynamic-text-area text-3">
+                        <h2 class="text-4xl font-bold mb-4">Rapid Evolution</h2>
+                        <p class="text-gray-600 leading-relaxed">
+                            2025 changed everything. I immersed myself in Logic, Algorithms, and AI. Despite a setback at WRO 2025, I pivoted to master Data Structures and Deep Learning. I am now a builder.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white text-center px-6">
+        <blockquote class="text-3xl font-light italic text-gray-800 max-w-3xl mx-auto">
+            "I believe true intelligence stems from the synthesis of logic and aesthetics."
+        </blockquote>
+        <p class="mt-8 text-gray-400 text-sm">&copy; 2026 Yuh Yee Young</p>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".card-stack-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1, // Smooth scrubbing
+                pin: ".sticky-container" // Pin the content while scrolling
+            }
+        });
+
+        // Animation Sequence
+        // 1. Start with Card 1 & Text 1 Visible
+        // 2. Scroll -> Card 1 fades/scales away, Card 2 comes in, Text 1 fades out, Text 2 fades in
         
-        <section class="mb-20">
-             <h2 class="text-lg font-bold uppercase tracking-widest mb-4">Interests</h2>
-             <p class="text-gray-600">
-                 Beyond code, I play the Erhu (SP Chinese Orchestra), practice calligraphy, and enjoy sketching. I believe true intelligence stems from the synthesis of logic and aesthetics.
-             </p>
-        </section>
-    </div>
+        tl.to(".text-1", { opacity: 0, y: -20, duration: 1 }) // Text 1 leaves
+          .to(".card-1", { scale: 0.8, opacity: 0, duration: 1 }, "<") // Card 1 leaves
+          
+          .to(".card-2", { scale: 1, opacity: 1, y: 0, duration: 1 }, "-=0.5") // Card 2 enters
+          .fromTo(".text-2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "<") // Text 2 enters
 
+          .to(".text-2", { opacity: 0, y: -20, duration: 1 }) // Text 2 leaves
+          .to(".card-2", { scale: 0.8, opacity: 0, duration: 1 }, "<") // Card 2 leaves
+
+          .to(".card-3", { scale: 1, opacity: 1, y: 0, duration: 1 }, "-=0.5") // Card 3 enters
+          .fromTo(".text-3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "<"); // Text 3 enters
+
+    </script>
 </body>
 </html>
