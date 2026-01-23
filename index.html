@@ -1,126 +1,50 @@
 <!DOCTYPE html>
-<html lang="en-SG">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me - Personal Introduction</title>
+    <title>Yu Yiyang | AI Engineer & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        header, footer {
-            background-color: #f4f4f4;
-            padding: 1em 2em;
-        }
-       
-        @media screen and (min-width: 1921px) {
-            header {
-                 padding-left: 320px;
-            ｝
-        ｝
-
-        @media screen and (max-width: 1921px) {
-    main {
-        padding-left: 3vw;
-    }
-}
-        footer{
-            text-align: center;
-        }
-        main {
-            padding: 2em;
-            max-width: 900px;
-            margin: auto;
-        }
-        section {
-            margin-bottom: 2.5em;
-        }
-        h2 {
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 0.3em;
-        }
-        ul {
-            padding-left: 1.2em;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #F5F5F7; color: #1D1D1F; }
+        .fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
-<header>
-    <h1>YU YIYANG Personal Profile</h1>
-    <h3>YUYIYANG® | Bring You Wisdom™</h3>
-    <h4>YIYANG.25@ichat.sp.edu.sg</h4>
-</header>
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-200">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-semibold text-lg tracking-tight hover:text-blue-600 transition">YUYIYANG®</a>
+            <div class="space-x-8 text-sm font-medium text-gray-500">
+                <a href="about.html" class="hover:text-black transition">About</a>
+                <a href="projects.html" class="hover:text-black transition">Portfolio</a>
+                <a href="contact.html" class="hover:text-black transition">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<main>
-    <section id="hero">
-        <h2>Overview</h2>
-        <p>Student at Singapore Polytechnic, Common ICT Programme. Interested in the intersection of AI, cognition, and philosophy.</p>
-    </section>
+    <main class="flex-grow flex items-center justify-center px-6">
+        <div class="text-center max-w-3xl fade-in" style="animation-delay: 0.1s;">
+            <p class="text-blue-600 font-medium mb-4 tracking-wide uppercase text-xs">Portfolio 2025</p>
+            <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter mb-6 leading-tight">
+                Bring You <br> Wisdom™
+            </h1>
+            <p class="text-xl text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
+                Full-Stack AI Developer & Student at Singapore Polytechnic.<br>
+                Specializing in Edge AI, Web Infrastructure, and Cognition.
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="projects.html" class="bg-black text-white px-8 py-3 rounded-full font-medium hover:bg-gray-800 transition">View My Work</a>
+                <a href="about.html" class="bg-white text-black border border-gray-300 px-8 py-3 rounded-full font-medium hover:bg-gray-50 transition">More About Me</a>
+            </div>
+        </div>
+    </main>
 
-    <section id="about-me">
-        <h2>About Me</h2>
-        <ul>
-            <li>Born in Zhejiang, China (2007)</li>
-            <li>Explorative thinker with interests in art, logic, and tradition</li>
-            <li>Strives to balance technical learning with moral clarity</li>
-        </ul>
-    </section>
-
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>Singapore Polytechnic Common ICT Programme (2025)</li>
-            <li>Aiming to enter Applied AI & Analysis track</li>
-        </ul>
-    </section>
-
-    <section id="interests-skills">
-        <h2>Interests & Skills</h2>
-        <ul>
-            <li>Programming fundamentals and AI theory</li>
-            <li>Artistic hobbies: Erhu, calligraphy, sketching</li>
-            <li>Reflective observation on social and philosophical issues</li>
-        </ul>
-    </section>
-
-    <section id="experience-achievements">
-        <h2>Experience & Achievements</h2>
-        <ul>
-            <li>AMC 1st place among the sec4 in school</li>
-            <li>Chinese Literature Competition City Level 10th Place</li>
-            <li>Multiple times winning medals in regional Competition for Erhu and calligraphy</li>
-        </ul>
-    </section>
-
-    <section id="values-aspirations">
-        <h2>Values & Aspirations</h2>
-        <ul>
-            <li>Committed to moral integrity and lifelong learning</li>
-            <li>Desire to explore how AI reflects or diverges from human cognition</li>
-            <li>
-                Aspires to:
-                <ul>
-                    <li>Design multimodal AI experiments (text/image/sound)</li>
-                    <li>Study generalisation, randomness & consistency in models</li>
-                    <li>Compare human and machine thinking patterns</li>
-                    <li>Understand the origin of intelligence and the link between creators and creations</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
-
-</main>
-
-<footer>
-    <p>&copy; 2025 My Personal Webpage | All rights reserved.</p>
-</footer>
+    <footer class="py-8 text-center text-gray-400 text-xs">
+        &copy; 2026 Yu Yiyang. Designed with Minimalism.
+    </footer>
 
 </body>
 </html>
