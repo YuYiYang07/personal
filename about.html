@@ -11,65 +11,56 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
         
-        body { font-family: 'Inter', sans-serif; background-color: #FAFAFA; color: #111; overflow-x: hidden; }
-        
-        /* The "Empty Inside" Font */
-        .outline-text {
-            -webkit-text-stroke: 1px rgba(0,0,0,0.3);
-            color: transparent;
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #FAFAFA; 
+            color: #111; 
+            overflow-x: hidden; /* Hide default horizontal scrollbar */
         }
-
-        /* Hide scrollbar for cleaner look */
-        ::-webkit-scrollbar { width: 0px; background: transparent; }
         
-        /* Card Stack Styles */
-        .card-stack-section {
-            position: relative;
-            height: 300vh; /* Determines length of scroll */
+        /* The Horizontal Container */
+        .horizontal-container {
+            width: 400vw; /* 4 Sections = 400% width */
+            height: 100vh;
+            display: flex;
+            flex-wrap: nowrap;
         }
-        .sticky-container {
-            position: sticky;
-            top: 0;
+        
+        .panel {
+            width: 100vw;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+        }
+
+        /* Image Containers */
+        .img-box {
             overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
         }
-        .card {
-            position: absolute;
-            width: 350px;
-            height: 450px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transform-origin: center bottom;
-            border: 1px solid #f3f4f6;
+        .img-box:hover {
+            transform: scale(1.02);
         }
-        .card img {
-            width: 100%;
-            height: 60%;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 24px;
+
+        /* Outline Text Effect */
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(0,0,0,0.2);
+            color: transparent;
         }
         
-        /* Text Content that changes */
-        .dynamic-text-area {
-            position: absolute;
-            right: 10%;
-            width: 300px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s ease;
-        }
-        .active-text {
-            opacity: 1;
-            transform: translateY(0);
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: #2563EB;
+            width: 0%;
+            z-index: 100;
         }
     </style>
 </head>
@@ -87,120 +78,115 @@
         </div>
     </nav>
 
-    <section class="h-[60vh] flex flex-col justify-center items-center text-center px-6 pt-20">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
-            The <span class="outline-text text-black">Timeline.</span>
-        </h1>
-        <p class="text-gray-500 max-w-xl text-lg">
-            From the scenic hills of Zhejiang to the digital frontier of Singapore. 
-            <br>A story of transformation.
-        </p>
-        <div class="mt-10 animate-bounce text-gray-400">↓ Scroll to Explore</div>
-    </section>
+    <div class="progress-bar"></div>
 
-    <section class="card-stack-section" id="stackSection">
-        <div class="sticky-container">
+    <div class="horizontal-wrapper overflow-hidden">
+        <div class="horizontal-container">
             
-            <div class="relative w-full md:w-1/2 h-full flex items-center justify-center">
-                <div class="card card-1 z-30">
-                    <div class="h-[60%] bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center text-gray-400">
-                        [Photo: Zhejiang / Childhood]
+            <section class="panel bg-white">
+                <div class="text-center px-4 max-w-4xl">
+                    <div class="inline-block px-3 py-1 mb-6 border border-gray-200 rounded-full text-xs font-medium text-gray-400 uppercase tracking-widest">
+                        The Biography
                     </div>
-                    <div class="card-content">
-                        <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">2007 - 2023</div>
-                        <h3 class="text-2xl font-bold mb-2">The Origin</h3>
-                        <p class="text-sm text-gray-500">Born in Zhejiang. A life of calligraphy, ink, and paper. No code, just art.</p>
-                    </div>
+                    <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight mb-6 leading-tight">
+                        Timeline of <br>
+                        <span class="text-blue-600">Transformation.</span>
+                    </h1>
+                    <p class="text-xl text-gray-500 max-w-2xl mx-auto">
+                        Scroll down to move forward in time. &rarr;
+                    </p>
                 </div>
+            </section>
 
-                <div class="card card-2 z-20 scale-90 translate-y-4 opacity-0">
-                    <div class="h-[60%] bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center text-blue-400">
-                        [Photo: Singapore / O-Levels]
-                    </div>
-                    <div class="card-content">
-                        <div class="text-xs font-bold text-blue-500 uppercase tracking-widest mb-1">2024</div>
-                        <h3 class="text-2xl font-bold mb-2">The Transition</h3>
-                        <p class="text-sm text-gray-500">Moved to Singapore. Completed O-Levels. A blank slate technically—knew only Excel & Word.</p>
-                    </div>
-                </div>
-
-                <div class="card card-3 z-10 scale-90 translate-y-8 opacity-0">
-                    <div class="h-[60%] bg-gradient-to-br from-black to-gray-800 flex items-center justify-center text-white">
-                        [Photo: Coding / Robot]
-                    </div>
-                    <div class="card-content">
-                        <div class="text-xs font-bold text-black uppercase tracking-widest mb-1">2025 - Present</div>
-                        <h3 class="text-2xl font-bold mb-2">The Awakening</h3>
-                        <p class="text-sm text-gray-500">Entered SP DAAA. From zero to Full-Stack AI in 12 months. GPA 3.94.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hidden md:block w-1/2 h-full relative">
-                <div class="absolute top-1/2 -translate-y-1/2 left-10">
-                    
-                    <div class="dynamic-text-area text-1">
-                        <h2 class="text-4xl font-bold mb-4">Roots in Tradition</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            Before lines of code, I studied lines of ink. My background in Calligraphy and the Erhu taught me discipline and the beauty of structure—principles I now apply to software architecture.
+            <section class="panel bg-gray-50">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl px-8 items-center h-full">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <span class="text-6xl font-black text-gray-200 absolute -top-20 left-0 -z-10 select-none">01</span>
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">2007 - 2023</div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">Roots in <span class="outline-text text-black">Tradition</span></h2>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Born in Zhejiang. Before I wrote code, I practiced Calligraphy. My early life was defined by the discipline of the Erhu and the flow of ink.
+                        </p>
+                        <p class="text-gray-500">
+                            I had zero exposure to programming. Computers were for "Word" and "Excel" only.
                         </p>
                     </div>
-
-                    <div class="dynamic-text-area text-2">
-                        <h2 class="text-4xl font-bold mb-4">A New Challenge</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            Arriving in Singapore was a reset. I faced the O-Levels with determination. At this stage, "Python" was just a snake to me. I had zero programming knowledge.
-                        </p>
+                    <div class="order-1 md:order-2 flex justify-center">
+                        <div class="img-box w-full max-w-md aspect-[4/5] bg-gray-300 flex items-center justify-center text-gray-500 font-medium">
+                            [Photo: Childhood / Art]
+                        </div>
                     </div>
-
-                    <div class="dynamic-text-area text-3">
-                        <h2 class="text-4xl font-bold mb-4">Rapid Evolution</h2>
-                        <p class="text-gray-600 leading-relaxed">
-                            2025 changed everything. I immersed myself in Logic, Algorithms, and AI. Despite a setback at WRO 2025, I pivoted to master Data Structures and Deep Learning. I am now a builder.
-                        </p>
-                    </div>
-
                 </div>
-            </div>
+            </section>
+
+            <section class="panel bg-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl px-8 items-center h-full">
+                    <div class="flex justify-center">
+                        <div class="img-box w-full max-w-md aspect-[4/5] bg-blue-100 flex items-center justify-center text-blue-400 font-medium">
+                            [Photo: Singapore / O-Levels]
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="text-sm font-bold text-blue-600 uppercase tracking-widest">2024</div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900">The <span class="text-blue-600">Reset</span></h2>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            Moving to Singapore was a blank slate. I tackled the O-Levels with intensity, yet technically, I was still a novice. 
+                        </p>
+                        <p class="text-gray-500">
+                            "Python" was just a snake to me. But the logical thinking I developed in math laid the groundwork for what was coming.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel bg-black text-white">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-6xl px-8 items-center h-full">
+                    <div class="order-2 md:order-1 space-y-6">
+                        <div class="text-sm font-bold text-gray-400 uppercase tracking-widest">2025 - Present</div>
+                        <h2 class="text-4xl md:text-5xl font-bold">Engineering <br>Intelligence</h2>
+                        <p class="text-lg text-gray-300 leading-relaxed">
+                            Entered Singapore Polytechnic (DAAA). In 12 months, I sprinted from "Hello World" to deploying YOLO AI models on Edge devices.
+                        </p>
+                        <ul class="space-y-2 text-gray-400">
+                            <li>✓ GPA 3.94 / 4.00</li>
+                            <li>✓ Full Stack & Embedded AI</li>
+                            <li>✓ WRO & School Speaker</li>
+                        </ul>
+                    </div>
+                    <div class="order-1 md:order-2 flex justify-center">
+                        <div class="img-box w-full max-w-md aspect-[4/5] bg-gray-800 flex items-center justify-center text-gray-500 font-medium border border-gray-700">
+                            [Photo: Coding / Robot]
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
-    </section>
-
-    <section class="py-32 bg-white text-center px-6">
-        <blockquote class="text-3xl font-light italic text-gray-800 max-w-3xl mx-auto">
-            "I believe true intelligence stems from the synthesis of logic and aesthetics."
-        </blockquote>
-        <p class="mt-8 text-gray-400 text-sm">&copy; 2026 Yuh Yee Young</p>
-    </section>
+    </div>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        const tl = gsap.timeline({
+        // Get the container that holds all panels
+        const container = document.querySelector(".horizontal-container");
+        const sections = gsap.utils.toArray(".panel");
+
+        // Create the horizontal scroll animation
+        gsap.to(sections, {
+            xPercent: -100 * (sections.length - 1),
+            ease: "none",
             scrollTrigger: {
-                trigger: ".card-stack-section",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1, // Smooth scrubbing
-                pin: ".sticky-container" // Pin the content while scrolling
+                trigger: ".horizontal-wrapper",
+                pin: true,           // Pin the container while scrolling
+                scrub: 1,            // Smooth linking of scroll to animation
+                snap: 1 / (sections.length - 1), // Snap to each panel
+                end: () => "+=" + container.offsetWidth, // Scroll length matches width
+                onUpdate: self => {
+                    // Update Progress Bar width
+                    gsap.to(".progress-bar", { width: self.progress * 100 + "%", duration: 0.1 });
+                }
             }
         });
-
-        // Animation Sequence
-        // 1. Start with Card 1 & Text 1 Visible
-        // 2. Scroll -> Card 1 fades/scales away, Card 2 comes in, Text 1 fades out, Text 2 fades in
-        
-        tl.to(".text-1", { opacity: 0, y: -20, duration: 1 }) // Text 1 leaves
-          .to(".card-1", { scale: 0.8, opacity: 0, duration: 1 }, "<") // Card 1 leaves
-          
-          .to(".card-2", { scale: 1, opacity: 1, y: 0, duration: 1 }, "-=0.5") // Card 2 enters
-          .fromTo(".text-2", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "<") // Text 2 enters
-
-          .to(".text-2", { opacity: 0, y: -20, duration: 1 }) // Text 2 leaves
-          .to(".card-2", { scale: 0.8, opacity: 0, duration: 1 }, "<") // Card 2 leaves
-
-          .to(".card-3", { scale: 1, opacity: 1, y: 0, duration: 1 }, "-=0.5") // Card 3 enters
-          .fromTo(".text-3", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1 }, "<"); // Text 3 enters
-
     </script>
 </body>
 </html>
