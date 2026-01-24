@@ -26,6 +26,7 @@
         .fade-in { animation: fadeIn 1.2s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="flex flex-col min-h-screen">
 
@@ -76,11 +77,73 @@
         </div>
     </main>
 
-    <footer class="py-8 text-center text-gray-400 text-xs">
-        <p>&copy; 2026 Yuh Yee Young. Designed in Singapore.</p>
-    </footer>
+   <footer class="bg-white border-t border-gray-100 pt-16 pb-8 mt-20">
+    <div class="max-w-6xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row justify-between items-start gap-10 mb-12">
+            
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold tracking-tighter">YYY®</h3>
+                <p class="text-sm text-gray-500">
+                    Full-Stack AI Developer<br>
+                    Based in Singapore
+                </p>
+                <a href="mailto:YIYANG.25@ICHAT.SP.EDU.SG" class="inline-block text-sm font-medium text-blue-600 hover:text-blue-800 transition">
+                    YIYANG.25@ICHAT.SP.EDU.SG
+                </a>
+            </div>
+
+            <div class="flex flex-col space-y-3 text-sm text-gray-500">
+                <span class="font-semibold text-gray-900 mb-1">Resources</span>
+                <a href="https://yuyiyang.vercel.app" class="hover:text-blue-600 transition">About the Author</a>
+                <a href="https://yyy-login.vercel.app" class="hover:text-blue-600 transition">Report Vulnerability</a>
+                <a href="#" class="hover:text-blue-600 transition">Privacy Statement</a>
+                <a href="#" class="hover:text-blue-600 transition">Terms of Use</a>
+            </div>
+
+            <div>
+                <span class="block font-semibold text-gray-900 mb-4 text-sm">Follow Me</span>
+                <div class="flex space-x-6">
+                    <a href="https://www.facebook.com" aria-label="facebook" class="text-gray-400 hover:text-blue-600 transition text-xl">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com" aria-label="instagram" class="text-gray-400 hover:text-pink-600 transition text-xl">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.x.com" aria-label="twitter" class="text-gray-400 hover:text-black transition text-xl">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.tiktok.com" aria-label="tiktok" class="text-gray-400 hover:text-black transition text-xl">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            
+            <p class="text-xs text-gray-400">
+                &copy; 2026 Yuh Yee Young. All rights reserved. <br class="md:hidden">
+                <span class="hidden md:inline">|</span> Year 1 Class 06 DAAA
+            </p>
+
+            <div class="flex items-center space-x-3 opacity-60 hover:opacity-100 transition grayscale hover:grayscale-0">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Singapore_Polytechnic_Logo.svg/1200px-Singapore_Polytechnic_Logo.svg.png" 
+                     alt="Singapore Polytechnic" 
+                     class="h-8 w-auto">
+                
+                <div class="text-[10px] leading-tight text-gray-500 border-l border-gray-300 pl-3">
+                    <span class="block font-bold">School of Computing</span>
+                    <span>Diploma in AI & Analytics</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</footer>
 </body>
 </html>
+
 
 
 
