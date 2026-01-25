@@ -30,17 +30,75 @@
 </head>
 <body class="flex flex-col min-h-screen">
 
-    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold tracking-tighter">YYY®</a>
-            <div class="space-x-8 hidden md:flex text-sm font-medium text-gray-500">
-                <a href="index.html" class="text-black hover:text-blue-600 transition">Overview</a>
-                <a href="projects.html" class="hover:text-blue-600 transition">Work</a>
-                <a href="skills.html" class="hover:text-blue-600 transition">Skills</a>
-                <a href="about.html" class="hover:text-blue-600 transition">About</a>
-            </div>
+   <nav class="fixed top-0 w-full bg-[#FAFAF8]/90 backdrop-blur-md border-b border-[#E6E6E3] z-[2000] font-sans">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+        
+        <a href="index.html" class="text-xl font-bold tracking-tighter text-[#2C2C2C] z-50 relative">
+            YYY®
+        </a>
+
+        <div class="hidden md:flex space-x-8 text-sm font-medium text-[#666666]">
+            <a href="index.html" class="text-[#2C2C2C] hover:text-blue-600 transition">Overview</a>
+            <a href="projects.html" class="hover:text-blue-600 transition">Work</a>
+            <a href="skills.html" class="hover:text-blue-600 transition">Skills</a>
+            <a href="about.html" class="hover:text-blue-600 transition">About</a>
         </div>
-    </nav>
+
+        <button id="mobile-menu-btn" class="md:hidden text-[#2C2C2C] focus:outline-none z-50 p-2">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+    </div>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-[#FAFAF8]/98 backdrop-blur-xl flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-300 z-40">
+        
+        <div class="flex flex-col space-y-8 text-center text-2xl font-light tracking-wide text-[#2C2C2C]">
+            <a href="index.html" class="mobile-link hover:text-blue-600 transition-colors">Overview</a>
+            <a href="projects.html" class="mobile-link hover:text-blue-600 transition-colors">Work</a>
+            <a href="skills.html" class="mobile-link hover:text-blue-600 transition-colors">Skills</a>
+            <a href="about.html" class="mobile-link hover:text-blue-600 transition-colors">About</a>
+        </div>
+
+        <div class="absolute bottom-10 text-xs text-gray-400 font-mono">
+            SINGAPORE &middot; 2026
+        </div>
+    </div>
+</nav>
+
+<script>
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const icon = btn.querySelector('i');
+    const links = document.querySelectorAll('.mobile-link');
+    let isMenuOpen = false;
+
+    btn.addEventListener('click', () => {
+        isMenuOpen = !isMenuOpen;
+        
+        if (isMenuOpen) {
+            // Open Menu
+            menu.classList.remove('opacity-0', 'pointer-events-none');
+            // Change Icon to X
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-xmark');
+        } else {
+            // Close Menu
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            // Change Icon back to Bars
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when a link is clicked
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            isMenuOpen = false;
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+        });
+    });
+</script>
 
     <main class="flex-grow flex items-center justify-center pt-20">
         <div class="max-w-5xl px-6 text-center fade-in">
@@ -167,6 +225,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
