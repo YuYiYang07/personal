@@ -157,6 +157,8 @@
             font-family: 'Fraunces', serif;
             transition: background 0.3s, color 0.3s;
             opacity: 0;
+            cursor: pointer;
+            background: transparent;
         }
         .read-more-link:hover { background: #CC785C; color: #F0EEE6; }
 
@@ -194,6 +196,94 @@
             .hw-underline { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
         }
 
+        /* ── Detail cards ── */
+        .detail-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .detail-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .detail-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(42,39,34,0.25);
+            backdrop-filter: blur(8px);
+        }
+        .detail-card {
+            position: relative;
+            background: #F0EEE6;
+            border: 1px solid rgba(42,39,34,0.08);
+            border-radius: 20px;
+            max-width: 520px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 48px 40px;
+            transform: translateY(28px);
+            transition: transform 0.4s ease;
+            box-shadow: 0 24px 64px rgba(42,39,34,0.14);
+        }
+        .detail-overlay.open .detail-card {
+            transform: translateY(0);
+        }
+        .detail-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(42,39,34,0.1);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            color: #6E6658;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.2s, border-color 0.2s;
+            font-family: 'Fraunces', serif;
+        }
+        .detail-close:hover { color: #2A2722; border-color: rgba(42,39,34,0.25); }
+        .detail-card::-webkit-scrollbar { width: 0; }
+        .detail-card { scrollbar-width: none; }
+        .detail-card .detail-period {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #CC785C;
+        }
+        .detail-card .detail-title {
+            font-size: 36px;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.2;
+            color: #2A2722;
+            margin-top: 12px;
+        }
+        .detail-card .detail-body {
+            margin-top: 24px;
+            font-size: 15px;
+            line-height: 1.85;
+            color: #6E6658;
+        }
+        .detail-card .detail-body p + p { margin-top: 16px; }
+        .detail-card .detail-cn {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 14px;
+            opacity: 0.5;
+            margin-top: 20px;
+        }
+
         /* ── Mobile ── */
         @media (max-width: 768px) {
             .road-strip { width: 48px; }
@@ -204,6 +294,8 @@
             .milestone-text-svg { max-width: 220px; height: auto; }
             .fs-dash { width: 22px; }
             #hero-text { top: 32%; }
+            .detail-card { padding: 36px 24px; max-height: 85vh; }
+            .detail-card .detail-title { font-size: 28px; }
         }
     </style>
 </head>
@@ -445,7 +537,7 @@
             first steps outside alone
         </p>
         <div class="mt-6 ml-1">
-            <a href="about-seven.html" class="read-more-link">read more &nbsp;&rarr;</a>
+            <button class="read-more-link" data-card="card-seven">read more &nbsp;&rarr;</button>
         </div>
     </div>
     <div class="milestone milestone-side" id="ms-1s" style="top:118vh;right:7%;width:28%;text-align:right;">
@@ -465,7 +557,7 @@
             two wheels, a wider world
         </p>
         <div class="mt-6 mr-1" style="text-align:right;">
-            <a href="about-fifteen.html" class="read-more-link">read more &nbsp;&rarr;</a>
+            <button class="read-more-link" data-card="card-fifteen">read more &nbsp;&rarr;</button>
         </div>
     </div>
     <div class="milestone milestone-side" id="ms-2s" style="top:290vh;left:7%;width:28%;">
@@ -484,7 +576,7 @@
             first time behind the wheel
         </p>
         <div class="mt-6 ml-1">
-            <a href="about-seventeen.html" class="read-more-link">read more &nbsp;&rarr;</a>
+            <button class="read-more-link" data-card="card-seventeen">read more &nbsp;&rarr;</button>
         </div>
     </div>
     <div class="milestone milestone-side" id="ms-3s" style="top:450vh;right:7%;width:28%;text-align:right;">
@@ -504,7 +596,7 @@
             the ground fell away
         </p>
         <div class="mt-6 mr-1" style="text-align:right;">
-            <a href="about-nineteen.html" class="read-more-link">read more &nbsp;&rarr;</a>
+            <button class="read-more-link" data-card="card-nineteen">read more &nbsp;&rarr;</button>
         </div>
     </div>
     <div class="milestone milestone-side" id="ms-4s" style="top:612vh;left:7%;width:28%;">
@@ -515,6 +607,67 @@
 
 </div><!-- /terrain -->
 
+<!-- ════════════════════ DETAIL CARDS ════════════════════ -->
+
+<div class="detail-overlay" id="card-seven">
+    <div class="detail-backdrop"></div>
+    <div class="detail-card">
+        <button class="detail-close">&times;</button>
+        <p class="detail-period">2007 &mdash; 2014</p>
+        <h2 class="detail-title">seven</h2>
+        <div class="detail-body">
+            <p>Born in Zhejiang, China. Before I wrote code, I practiced calligraphy &mdash; the discipline of brush and ink, the patience of getting a single stroke right.</p>
+            <p>My early life was defined by the flow of the Erhu and the rhythm of tradition. Computers were for &ldquo;Word&rdquo; and &ldquo;Excel&rdquo; only. I had zero exposure to programming.</p>
+            <p>But the precision of calligraphy and the patience of music were quietly building something &mdash; a way of thinking that would matter later.</p>
+            <p class="detail-cn">墨迹未干，指尖初学</p>
+        </div>
+    </div>
+</div>
+
+<div class="detail-overlay" id="card-fifteen">
+    <div class="detail-backdrop"></div>
+    <div class="detail-card">
+        <button class="detail-close">&times;</button>
+        <p class="detail-period">2014 &mdash; 2022</p>
+        <h2 class="detail-title">fifteen</h2>
+        <div class="detail-body">
+            <p>The world got bigger. Two wheels carried me further than my feet ever could &mdash; past the familiar streets, past the routines, into questions I didn&rsquo;t yet know how to ask.</p>
+            <p>Adolescence was a slow accumulation: discipline from the arts, logic from mathematics, curiosity from everything in between.</p>
+            <p>I didn&rsquo;t know where the road was leading. I just knew it stretched further than I could see.</p>
+            <p class="detail-cn">少年不识路远近</p>
+        </div>
+    </div>
+</div>
+
+<div class="detail-overlay" id="card-seventeen">
+    <div class="detail-backdrop"></div>
+    <div class="detail-card">
+        <button class="detail-close">&times;</button>
+        <p class="detail-period">2023 &mdash; 2024</p>
+        <h2 class="detail-title">seventeen</h2>
+        <div class="detail-body">
+            <p>Moving to Singapore was a blank slate. New country, new language rhythms, new rules. I tackled the O-Levels with intensity.</p>
+            <p>&ldquo;Python&rdquo; was still just a snake to me. But the logical thinking I&rsquo;d developed in math was quietly laying the groundwork for what was coming.</p>
+            <p>Summer roads, windows down, the feeling that everything was about to change &mdash; and it did.</p>
+            <p class="detail-cn">万事从头越</p>
+        </div>
+    </div>
+</div>
+
+<div class="detail-overlay" id="card-nineteen">
+    <div class="detail-backdrop"></div>
+    <div class="detail-card">
+        <button class="detail-close">&times;</button>
+        <p class="detail-period">2025 &mdash; present</p>
+        <h2 class="detail-title">nineteen</h2>
+        <div class="detail-body">
+            <p>Entered Singapore Polytechnic, Diploma in AI &amp; Analytics. In twelve months, I sprinted from &ldquo;Hello World&rdquo; to deploying YOLO AI models on Edge devices.</p>
+            <p>Semester GPA: 4.00 / 4.00. Full-stack development, embedded AI, robotics. WRO competitor, school speaker.</p>
+            <p>The ground fell away &mdash; and I discovered I could fly.</p>
+            <p class="detail-cn">腾飞</p>
+        </div>
+    </div>
+</div>
 
 <!-- ════════════════════ SCRIPT ════════════════════ -->
 <script>
@@ -665,6 +818,37 @@
         document.fonts.load('italic 300 52px "Fraunces"'),
         document.fonts.load('300 48px "Fraunces"')
     ]).then(initMilestones).catch(initMilestones);
+
+    /* ── Detail cards ── */
+    function openCard(id) {
+        var overlay = document.getElementById(id);
+        if (!overlay) return;
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeCard(overlay) {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-card]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            openCard(btn.dataset.card);
+        });
+    });
+    document.querySelectorAll('.detail-overlay').forEach(function(overlay) {
+        overlay.querySelector('.detail-backdrop').addEventListener('click', function() {
+            closeCard(overlay);
+        });
+        overlay.querySelector('.detail-close').addEventListener('click', function() {
+            closeCard(overlay);
+        });
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.detail-overlay.open').forEach(closeCard);
+        }
+    });
 
 })();
 </script>
